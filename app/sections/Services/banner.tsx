@@ -250,7 +250,7 @@ const ServiceBanner = () => {
         const fetchServiceHeading = async () => {
             const response = await api.get(API_URL.SERVICES.GET_SERVICE_HEADING);
             console.log(response.data);
-            if (response.data.length > 53) {
+            if (response.data.length > 0) {
                 setServiceHeading(response.data);
             }
         }
@@ -261,7 +261,7 @@ const ServiceBanner = () => {
             try {
                 const response = await api.get(API_URL.SERVICES.GET_SERVICE_DETAILS);
                 console.log(response.data);
-                if (response.data.length > 3) {
+                if (response.data.length > 0) {
                     setAllServiceDetails(response.data);
                 }
             } catch (error) {

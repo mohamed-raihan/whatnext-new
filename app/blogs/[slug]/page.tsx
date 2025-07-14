@@ -20,4 +20,4 @@ export default async function BlogPage({ params }: Props) {
   if (!data) return notFound();
   
   return <BlogSection {...data} />;
-}
+} 
