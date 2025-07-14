@@ -395,15 +395,18 @@ export default function BlogList() {
     console.log(headingNameById,categoryNameById);
     
 
-    const transformedBlogs = (Array.isArray(blogs) && blogs.length > 0 ? blogs : blogData).map((blog: any) => {
-      // If blog is from API, transform; else, return as-is (for static data fallback)
-      if ('blog_heading' in blog) {
+    // Type guard for ApiBlog
+    function isApiBlog(blog: unknown): blog is ApiBlog {
+      return typeof blog === 'object' && blog !== null && 'blog_heading' in blog;
+    }
+
+    const sourceBlogs = Array.isArray(blogs) && blogs.length > 0 ? blogs : blogData;
+    const transformedBlogs = sourceBlogs.map((blog) => {
+      if (isApiBlog(blog)) {
         const headingName = headingNameById[blog.blog_heading];
-        console.log(headingName);
-        
         return {
           title: blog.title,
-          slug: blog.slug, 
+          slug: blog.slug,
           author: blog.author,
           date: blog.date,
           image: blog.blog_image,

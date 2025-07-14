@@ -19,6 +19,19 @@ export async function getBlogCategories() {
   return data;
 }
 
+interface ApiBlog {
+  title: string;
+  slug: string;
+  author: string;
+  date: string;
+  blog_image: string;
+  description?: string;
+  blog_category?: {
+    title?: string;
+  };
+  time?: string;
+}
+
 export const blogData: Record<string, BlogData> = {
 
   'why-canada-top-choice': {
@@ -1284,8 +1297,7 @@ export const blogData: Record<string, BlogData> = {
 }; 
 
 // Transform API response to BlogData
-function transformApiBlogToBlogData(apiBlog: any): BlogData {
-  const slug = apiBlog.slug;
+function transformApiBlogToBlogData(apiBlog: ApiBlog): BlogData {
   return {
     title: apiBlog.title,
     slug: apiBlog.slug,
@@ -1311,6 +1323,8 @@ export async function getBlogs(): Promise<BlogData[]> {
     return Object.values(blogData);
   } catch (error) {
     // fallback to static data on error
+    console.log(error);
+    
     return Object.values(blogData);
   }
 }
