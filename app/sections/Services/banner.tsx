@@ -325,7 +325,7 @@ const ServiceBanner = () => {
                         <Image src="/pencil.svg" alt="pencil" className="w-full h-full object-cover" width={140} height={180} />
                     </div>
                     {/* Main Bordered Div */}
-                    <div className="relative flex flex-col md:flex-row border-[5px] border-[#0046AA] rounded-xl  w-full xl:h-[52rem]  shadow-lg bg-white">
+                    <div className="relative flex flex-col md:flex-row border-[5px] border-[#0046AA] rounded-xl  w-full xl:h-[52rem]  shadow-lg bg-white overflow-hidden">
                         <div className="bg-transparent p-4 md:p-6 flex flex-col justify-between relative md:absolute top-0 md:top-30 w-full md:w-2/5 lg:w-1/3 z-20 h-full">
                             <div className="flex flex-col h-full">
                                 <div className="flex-1 overflow-y-auto">
@@ -352,7 +352,7 @@ const ServiceBanner = () => {
                         </div>
 
                         <div className="flex-1 flex justify-end p-4 md:p-8 relative w-full md:w-1/2">
-                            <div className="relative px-4 md:px-8 py-8 md:py-16 w-full md:w-2/3">
+                            <div className="relative px-4 md:px-8 py-8 md:py-16 w-full md:w-2/3 ">
                                 {isLoading ? (
                                     <div className="flex items-center justify-center h-full">
                                         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#0046AA]"></div>
@@ -360,7 +360,7 @@ const ServiceBanner = () => {
                                 ) : (
                                     <>
                                         {serviceDetails ? (
-                                            <>
+                                            <div className="h-full flex flex-col overflow-y-auto">
                                                 <Image
                                                     src={serviceDetails.image}
                                                     alt={serviceDetails.title}
@@ -375,7 +375,7 @@ const ServiceBanner = () => {
                                                 <button onClick={() => setIsEnquireFormOpen(true)} className="bg-[#2563eb] text-white px-4 md:px-6 py-2 rounded font-semibold font-inter float-right relative md:absolute bottom-0 md:bottom-0 right-4 md:right-10 hover:bg-[#1d4ed8] transition-colors duration-200">
                                                     Enquire Now
                                                 </button>
-                                            </>
+                                            </div>
                                         ) : (
                                             <div>No details found.</div>
                                         )}
