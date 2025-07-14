@@ -8,8 +8,11 @@ export const API_URL = {
         GET_SERVICE_DETAILS: '/api/service-body/',
     },
     BLOGS: {
-        POST_BLOG_CATEGORIES: '/api/blog-category',
-        GET_BLOG_CATEGORIES: '/api/blog-category',
+        GET_BLOGS: '/api/blogs/',
+        GET_BLOG_INNER: '/api/blog-inner/',
+        GET_BLOG_HEADERS: '/api/blog-heading/',
+        POST_BLOG_CATEGORIES: '/api/blog-category/',
+        GET_BLOG_CATEGORIES: '/api/blog-category/',
         PATCH_BLOG_CATEGORY: (id: string) => `/api/blog-category/${id}`,
     },
     CONTACT_US: {

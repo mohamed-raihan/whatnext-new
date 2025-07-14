@@ -225,7 +225,7 @@ export const countryData: Record<string, CountryData> = {
             { logo: '/uk/manchester.jpg', height: '', title: 'University of Manchester' },
             { logo: '/uk/edinburgh.jpeg', height: '', title: 'University of Edinburgh' },
             { logo: '/uk/queen-mary-university.png', height: '', title: 'Queen Mary University of London' },
-            // { logo: '/uk/CardiffMet_logo-1.png', height: '', title: 'Cardiff Metropolitan University' },
+            { logo: '/uk/cardiff-university.png', height: '', title: 'Cardiff Metropolitan University' },
             { logo: '/uk/university_liverpool.jpg', height: '', title: 'University of Liverpool' },
             { logo: '/uk/durhan-university.png', height: '', title: 'Durham University' },
             { logo: '/uk/university of york.png', height: '', title: 'University of York' },
@@ -355,7 +355,7 @@ export const getCountryData = async () => {
         const apiData = await getStudyAbroadData();
         console.log(apiData);
 
-        if (Object.keys(apiData).length > 5) {
+        if (Object.keys(apiData).length > 0) {
             return apiData;
         }
         return countryData;

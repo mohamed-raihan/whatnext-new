@@ -13,6 +13,7 @@ interface ApiCountry {
     alt_img_caption: string;
     alt_img_description: string;
     slug: string;
+    icon: string;
     heading: string;
 }
 
@@ -65,17 +66,17 @@ export const getStudyAbroadData = async (): Promise<Record<string, CountryData>>
         const countryData: Record<string, CountryData> = {};
 
         countries.forEach(country => {
-            const countryName = country.title.toLowerCase();
+            const countryName = country.slug.toLowerCase();
             countryData[countryName] = {
-                name: country.title,
-                paragraph: country.description,
+                name: country.subtitle,
+                paragraph: country.title,
                 heading: country.heading,
-                backgroundImage: country.alt_img_text,
-                greenSectionContent: country.subtitle.split('+').map(s => s.trim()),
-                animalShadow: country.image,
+                backgroundImage: country.image,
+                greenSectionContent: country.description.split('+').map(s => s.trim()),
+                animalShadow: country.icon,
                 universityLogos: universitiesByCountry.get(country.id) || [],
                 whyChooseCards: whyChoosesByCountry.get(country.id) || [],
-                blueAnimal: country.alt_img_caption,
+                blueAnimal: whyChooses[0].icon,
             };
         });
 

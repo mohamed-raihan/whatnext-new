@@ -1,6 +1,9 @@
 'use client';
+import { API_URL } from '@/app/api-services/api_url';
+import api from '@/app/api-services/axios';
 import GetintouchForm from '@/app/components/getintouch-form';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
 // import blogs from './blogs';
 
@@ -47,7 +50,24 @@ interface Blog {
     is_event?: boolean;
 }
 
-const blogs = [
+type Category = { id: number; title: string };
+type Heading = { id: number; title: string };
+type ApiBlog = {
+  id: number;
+  title: string;
+  slug: string;
+  author: string;
+  date: string;
+  blog_image: string;
+  blog_category: number;
+  blog_heading: number;
+  time: string;
+  description: string;
+  // add any other fields from your API if needed
+};
+
+
+const blogData = [
     {
         title: 'Why Canada Remains A Top Choice For Indian Students',
         slug: 'why-canada-top-choice',
@@ -346,40 +366,98 @@ const blogs = [
 ];
 
 export default function BlogList() {
+    
+    const [categories, setCategories] = useState<Category[]>([]);
+    const [headings, setHeadings] = useState<Heading[]>([]);
+    const [blogs, setBlogs] = useState<ApiBlog[] | typeof blogData>(blogData);
+    
+    useEffect(() => {
+      const fetchAll = async () => {
+        const [blogsRes, categoriesRes, headingsRes] = await Promise.all([
+          api.get(API_URL.BLOGS.GET_BLOGS),
+          api.get(API_URL.BLOGS.GET_BLOG_CATEGORIES),
+          api.get(API_URL.BLOGS.GET_BLOG_HEADERS),
+        ]);
+        setBlogs(blogsRes.data);
+        setCategories(categoriesRes.data);
+        setHeadings(headingsRes.data);
+      };
+      fetchAll();
+    }, []);
+
+    console.log(blogs);
+    console.log(headings,categories);
+    
+
+    const headingNameById = Object.fromEntries(headings.map(h => [h.id, h.title]));
+    const categoryNameById = Object.fromEntries(categories.map(c => [c.id, c.title]));
+
+    console.log(headingNameById,categoryNameById);
+    
+
+    const transformedBlogs = (Array.isArray(blogs) && blogs.length > 0 ? blogs : blogData).map((blog: any) => {
+      // If blog is from API, transform; else, return as-is (for static data fallback)
+      if ('blog_heading' in blog) {
+        const headingName = headingNameById[blog.blog_heading];
+        console.log(headingName);
+        
+        return {
+          title: blog.title,
+          slug: blog.slug, 
+          author: blog.author,
+          date: blog.date,
+          image: blog.blog_image,
+          category: categoryNameById[blog.blog_category] || '',
+          readTime: blog.time || '',
+          is_editors: typeof headingName === 'string' && headingName.toLowerCase().includes('editor'),
+          is_recent: typeof headingName === 'string' && headingName.toLowerCase().includes('recent'),
+          is_trending: typeof headingName === 'string' && headingName.toLowerCase().includes('trending'),
+          featured: typeof headingName === 'string' && headingName.toLowerCase().includes('featured'),
+          excerpt: blog.description,
+          is_event: typeof headingName === 'string' && headingName.toLowerCase().includes('event'),
+        };
+      }
+      // fallback for static data
+      return blog;
+    });
+
+    console.log(transformedBlogs);
+    
+
     // Main featured blog
-    const main = blogs.find((b: Blog) => b.featured) || blogs[0];
+    const main = transformedBlogs.find((b: Blog) => b.featured) || transformedBlogs[0];
     // Side blogs (not featured, just take next 3 for demo)
-    const side = blogs.filter((b: Blog) => b.slug !== main.slug).slice(0, 3);
+    const side = transformedBlogs.filter((b: Blog) => b.slug !== main.slug).slice(0, 3);
     // Editors Choice
-    const editors = blogs.filter((b: Blog) => b.is_editors).slice(0, 4);
+    const editors = transformedBlogs.filter((b: Blog) => b.is_editors).slice(0, 4);
     // Events and Activities
-    const events = blogs.filter((b: Blog) => b.is_event).slice(0, 4);
+    const events = transformedBlogs.filter((b: Blog) => b.is_event).slice(0, 4);
     // Recent Posts (first is large, rest are small)
-    const recent = blogs.filter((b: Blog) => b.is_recent).slice(0, 4);
+    const recent = transformedBlogs.filter((b: Blog) => b.is_event).slice(0, 4);
     // Trending News
-    const trending = blogs.filter((b: Blog) => b.is_trending).slice(0, 4);
+    const trending = transformedBlogs.filter((b: Blog) => b.is_trending).slice(0, 4);
     // Popular Posts (hardcoded for demo)
 
-    console.log(trending);
+    console.log(recent);
 
 
     const popular = [
         {
-            ...blogs.find((b: Blog) => b.slug === 'influence-the-future-of-css'),
+            ...transformedBlogs.find((b: Blog) => b.slug === 'influence-the-future-of-css'),
             category: 'Gadget',
             image: '/blogs/t_popular_post01.jpg.svg',
             title: 'Influence The Future Of CSS',
             date: '27 August, 2024',
         },
         {
-            ...blogs.find((b: Blog) => b.slug === 'best-tech-accessor-10-work-from-home'),
+            ...transformedBlogs.find((b: Blog) => b.slug === 'best-tech-accessor-10-work-from-home'),
             category: 'News',
             image: '/blogs/t_popular_post02.jpg.svg',
             title: 'Best Tech Accessor 10 Work From Home',
             date: '27 August, 2024',
         },
         {
-            ...blogs.find((b: Blog) => b.slug === 'the-butter-chocolate-cookies-daily'),
+            ...transformedBlogs.find((b: Blog) => b.slug === 'the-butter-chocolate-cookies-daily'),
             category: 'Technology',
             image: '/blogs/Container-6.svg',
             title: 'The Butter Chocolate Cookies Daily',
@@ -398,7 +476,7 @@ export default function BlogList() {
                 <div className="flex flex-col lg:flex-row gap-6 mb-12">
                     {/* Main Featured Blog */}
                     <Link
-                        href={`/blogs/${main.slug}`}
+                        href={`/blogs/${main?.slug}`}
                         className="flex-1 relative rounded-lg overflow-hidden group min-h-[350px] lg:min-h-[500px] flex"
                     >
                         <img
@@ -522,7 +600,7 @@ export default function BlogList() {
                         <div className="flex flex-col md:flex-row gap-6">
                             {/* Featured Recent Post */}
                             <Link
-                                href={`/blogs/${recent[0].slug}`}
+                                href={`/blogs/${recent[0]?.slug}`}
                                 className="relative rounded-lg overflow-hidden flex-1 min-h-[300px] max-h-[350px] shadow group"
                             >
                                 <img src={recent[0].image} alt={recent[0].title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition" />

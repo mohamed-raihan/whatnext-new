@@ -839,7 +839,7 @@ export const blogData: Record<string, BlogData> = {
       <br />
       <div class="cta-section">
           <h2>Your Journey Starts Here with "WhatNext"</h2>
-          <p>Our mission is to make studying abroad smooth, structured, and successful for every Indian student. Here’s how we support you:</p>
+          <p>Our mission is to make studying abroad smooth, structured, and successful for every Indian student. Here's how we support you:</p>
           <br />
           <div class="service-list">
               <ul>
@@ -899,7 +899,7 @@ export const blogData: Record<string, BlogData> = {
     <br />
     <h3>6. <b>Emergency Contacts & Student Helplines</b></h3>
     <p>
-        Safety is a priority. We provided a list of embassy contacts, university support numbers, and “WhatNext” alumni mentors in major cities.
+        Safety is a priority. We provided a list of embassy contacts, university support numbers, and "WhatNext" alumni mentors in major cities.
     </p>
     <br />
     <div class="cta-section">
@@ -930,7 +930,7 @@ export const blogData: Record<string, BlogData> = {
     <h2>Make Your Visa Interview Count — The First Step to Your American Dream</h2>
     <br />
     <p>
-      The F1 visa interview can be intimidating — but it doesn’t have to be. At "WhatNext", we conducted a focused workshop for students heading to the U.S. to ensure they’re fully prepared to ace their interviews and avoid common mistakes that lead to rejections.
+      The F1 visa interview can be intimidating — but it doesn't have to be. At "WhatNext", we conducted a focused workshop for students heading to the U.S. to ensure they're fully prepared to ace their interviews and avoid common mistakes that lead to rejections.
     </p>
     <br />
     <h1><b>Top Mistakes We Helped Students Avoid</b></h1>
@@ -969,7 +969,7 @@ export const blogData: Record<string, BlogData> = {
         <ul>
           <li><b>Mock interviews with real-time feedback</b></li>
           <li><b>Visa document checklist and SOP guidance</b></li>
-          <li><b>Live Q&A with alumni who’ve successfully cleared F1 interviews</b></li>
+          <li><b>Live Q&A with alumni who've successfully cleared F1 interviews</b></li>
         </ul>
       </div>
     </div>`,
@@ -1127,7 +1127,7 @@ export const blogData: Record<string, BlogData> = {
     <div class="cta-section">
       <h2>Building Global Pathways</h2>
       <p>
-        Events like these empower students with clarity and confidence. At "WhatNext", we\'re committed to guiding you from exploration to enrollment.
+        Events like these empower students with clarity and confidence. At "WhatNext", we're committed to guiding you from exploration to enrollment.
       </p>
       <div class="service-list">
         <ul>
@@ -1150,13 +1150,13 @@ export const blogData: Record<string, BlogData> = {
   content: `<h1><b>Land the Internship. Launch the Future.</b></h1>
     <br />
     <p>
-      Want to intern at Google, Amazon, or a fast-paced startup in Berlin? Tech internships abroad open doors to real-world innovation and global career growth. Here’s your go-to guide for making it happen.
+      Want to intern at Google, Amazon, or a fast-paced startup in Berlin? Tech internships abroad open doors to real-world innovation and global career growth. Here's your go-to guide for making it happen.
     </p>
     <br />
     <h2>What Makes Interning Abroad Unique?</h2>
     <ul>
       <li><b>Global Exposure</b> — Work with diverse teams and cutting-edge tech</li>
-      <li><b>Real Skill Development</b> — Beyond theory, you\'ll solve live problems</li>
+      <li><b>Real Skill Development</b> — Beyond theory, you'll solve live problems</li>
       <li><b>Networking</b> — Build contacts with mentors, peers, and future employers</li>
     </ul>
     <br />
@@ -1169,7 +1169,7 @@ export const blogData: Record<string, BlogData> = {
     </ul>
     <br />
     <p>
-      “WhatNext” also supports you with mock interviews, resume reviews, and internship application tracking.
+      "WhatNext" also supports you with mock interviews, resume reviews, and internship application tracking.
     </p>`,
   tags: ['TechInternships', 'StudyAbroadCareer', 'GlobalTech'],
   category: 'Career',
@@ -1184,7 +1184,7 @@ export const blogData: Record<string, BlogData> = {
   content: `<h1><b>Stand Out with a Story That Matters</b></h1>
     <br />
     <p>
-      Your personal statement is more than just words — it\'s your first impression on the admissions committee. Whether applying to the UK, US, or EU, a strong statement sets the tone.
+      Your personal statement is more than just words — it's your first impression on the admissions committee. Whether applying to the UK, US, or EU, a strong statement sets the tone.
     </p>
     <br />
     <h2>What Makes a Great Statement?</h2>
@@ -1203,7 +1203,7 @@ export const blogData: Record<string, BlogData> = {
     </ul>
     <br />
     <p>
-      “WhatNext” offers one-on-one SOP editing, brainstorming sessions, and final review support to help you shine.
+      "WhatNext" offers one-on-one SOP editing, brainstorming sessions, and final review support to help you shine.
     </p>`,
   tags: ['PersonalStatement', 'SOPWriting', 'AdmissionsTips'],
   category: 'Admissions',
@@ -1231,13 +1231,13 @@ export const blogData: Record<string, BlogData> = {
     <br />
     <h2>Where to Start?</h2>
     <ul>
-      <li><b>University websites</b> — Always check the \'funding\' section</li>
+      <li><b>University websites</b> — Always check the 'funding' section</li>
       <li><b>Scholarship portals</b> — Like Buddy4Study, Scholarships.com, and StudyAbroadShiksha</li>
       <li><b>Early deadlines</b> — Apply at least 3-6 months before your intake</li>
     </ul>
     <br />
     <p>
-      “WhatNext” provides personalized scholarship mapping and SOP assistance to improve your chances.
+      "WhatNext" provides personalized scholarship mapping and SOP assistance to improve your chances.
     </p>`,
   tags: ['ScholarshipGuide', 'FundingAbroad', 'StudyAbroadFinance'],
   category: 'Finance',
@@ -1272,7 +1272,7 @@ export const blogData: Record<string, BlogData> = {
     </ul>
     <br />
     <p>
-      “WhatNext” offers expert visa counseling, mock interviews, and document verification services.
+      "WhatNext" offers expert visa counseling, mock interviews, and document verification services.
     </p>`,
   tags: ['VisaApplication', 'StudentVisaGuide', 'AbroadStudies'],
   category: 'Visa',
@@ -1282,3 +1282,35 @@ export const blogData: Record<string, BlogData> = {
 
 
 }; 
+
+// Transform API response to BlogData
+function transformApiBlogToBlogData(apiBlog: any): BlogData {
+  const slug = apiBlog.slug;
+  return {
+    title: apiBlog.title,
+    slug: apiBlog.slug,
+    author: apiBlog.author,
+    date: apiBlog.date,
+    mainImage: apiBlog.blog_image,
+    content: apiBlog.description ? apiBlog.description.replace(/\n/g, '<br/>') : '',
+    tags: [], // Add logic if you have tags in API
+    category: apiBlog.blog_category?.title || '',
+    readTime: apiBlog.time ? `${parseInt(apiBlog.time.split(':')[1], 10)} mins` : '',
+  };
+}
+
+// Fetch blogs (returns Promise<BlogData[]>)
+export async function getBlogs(): Promise<BlogData[]> {
+  try {
+    const response = await api.get(API_URL.BLOGS.GET_BLOG_INNER);
+    console.log('Fetched blogs from API:', response.data); // Safe logging
+    if (Array.isArray(response.data) && response.data.length > 0) {
+      return response.data.map(transformApiBlogToBlogData);
+    }
+    // fallback to static data
+    return Object.values(blogData);
+  } catch (error) {
+    // fallback to static data on error
+    return Object.values(blogData);
+  }
+}

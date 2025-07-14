@@ -34,7 +34,7 @@ const CountrySection: React.FC<CountryData> = ({
                 <div className="relative z-10 mt-10 md:mt-20 ms-4 md:ms-20 flex flex-col  h-full items-start">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight md:leading-tight lg:leading-tight">
                         Study in <br />
-                        <span className="block text-5xl md:text-7xl lg:text-[120px] font-bold">{name}</span>
+                        <span className="block text-5xl md:text-7xl lg:text-[120px] font-bold uppercase">{name}</span>
                     </h1>
                     <p className="mt-4 max-w-xs md:max-w-xl font-montserrat font-semibold text-base md:text-lg lg:text-[20px]">
                         {paragraph}
