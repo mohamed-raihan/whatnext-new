@@ -68,8 +68,8 @@ export const getStudyAbroadData = async (): Promise<Record<string, CountryData>>
         countries.forEach(country => {
             const countryName = country.slug.toLowerCase();
             countryData[countryName] = {
-                name: country.subtitle,
-                paragraph: country.title,
+                name: country.title,
+                paragraph: country.subtitle,
                 heading: country.heading,
                 backgroundImage: country.image,
                 greenSectionContent: country.description.split('+').map(s => s.trim()),

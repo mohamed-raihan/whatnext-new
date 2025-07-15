@@ -360,7 +360,7 @@ const ServiceBanner = () => {
                                 ) : (
                                     <>
                                         {serviceDetails ? (
-                                            <div className="h-full flex flex-col overflow-y-auto">
+                                            <div className="h-full flex flex-col overflow-y-auto scrollbar-hide">
                                                 <Image
                                                     src={serviceDetails.image}
                                                     alt={serviceDetails.title}
