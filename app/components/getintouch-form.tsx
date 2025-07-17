@@ -38,7 +38,11 @@ const GetintouchForm = () => {
         }
 
         // Email validation
-        if (formData.email) {
+
+        if (!formData.email.trim()) {
+            newErrors.email = 'Email is required';
+            isValid = false;
+        } else {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(formData.email)) {
                 newErrors.email = 'Invalid email format';
@@ -124,7 +128,7 @@ const GetintouchForm = () => {
                 <div>
                     <input
                         type="email"
-                        placeholder="Email"
+                        placeholder="Email *"
                         className={`w-full border ${errors.email ? 'border-red-500' : 'border-gray-300'} px-3 py-2 sm:px-4 sm:py-3 rounded outline-none text-sm sm:text-base`}
                         name="email"
                         value={formData.email}
@@ -151,12 +155,12 @@ const GetintouchForm = () => {
                         onChange={handleChange}
                     >
                         <option value="">How did you find us?</option>
-                        <option value="Linkedin">LinkedIn</option>
+                        <option value="LinkedIn">LinkedIn</option>
                         <option value="Facebook">Facebook</option>
                         <option value="Instagram">Instagram</option>
                         <option value="Google">Google</option>
                         <option value="Reference">Reference</option>
-                        <option value="Other">Other</option>
+                        <option value="Other">Other</option> 
                     </select>
                     {errors.find_us && <p className="text-red-500 text-sm mt-1">{errors.find_us}</p>}
                 </div>

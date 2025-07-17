@@ -40,13 +40,16 @@ export default function EnquireForm({ setIsEnquireFormOpen }: { setIsEnquireForm
     }
 
     // Email validation
-    if (formData.email) {
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+      isValid = false;
+  } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
-        newErrors.email = 'Invalid email format';
-        isValid = false;
+          newErrors.email = 'Invalid email format';
+          isValid = false;
       }
-    }
+  }
 
     // Phone number validation
     if (!formData.phone_number.trim()) {
@@ -138,7 +141,7 @@ export default function EnquireForm({ setIsEnquireFormOpen }: { setIsEnquireForm
             <div>
               <input
                 type="email"
-                placeholder="Email"
+                placeholder="Email *"
                 className={`w-full border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500`}
                 name="email"
                 value={formData.email}
@@ -165,7 +168,7 @@ export default function EnquireForm({ setIsEnquireFormOpen }: { setIsEnquireForm
                 onChange={handleChange}
               >
                 <option value="">How did you find us?</option>
-                <option value="Linkedin">LinkedIn</option>
+                <option value="LinkedIn">LinkedIn</option>
                 <option value="Facebook">Facebook</option>
                 <option value="Instagram">Instagram</option>
                 <option value="Google">Google</option>
